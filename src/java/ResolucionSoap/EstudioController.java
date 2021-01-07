@@ -94,18 +94,77 @@ PreparedStatement consultaPreparada;
        consultaPreparada.setInt(1, id);
        consultaPreparada.setString(2, nro_registro);
        
-       
+       ResultSet resultadoQuery = consultaPreparada.executeQuery();
+   
+        if(resultadoQuery.first()){
+        return true;
+        }
+        else{
+            return false;
+        }
+        
+    } catch (SQLException ex) {
+        Logger.getLogger(EstudioController.class.getName()).log(Level.SEVERE, null, ex);
+        System.err.println("Error al ejecutar consulta");
+    }
+
+    return false;
+    
+}
+
+public boolean comprobarEstadoUsuarioPendiente(int id){
+
+    try {
+        String consultaEstadoUsuario= "select estado from usuario where id =?";
+        
+        PreparedStatement consultaPreparada= conexion.getConnection().prepareStatement(consultaEstadoUsuario);
+        
+        consultaPreparada.setInt(1, id);
+        
+        ResultSet resultado= consultaPreparada.executeQuery();
+        
+        while(resultado.next()){
+            
+            if(resultado.getString(1).equalsIgnoreCase("pendiente")){
+            
+            
+            return true;   
+            }
+        }
         
     } catch (SQLException ex) {
         Logger.getLogger(EstudioController.class.getName()).log(Level.SEVERE, null, ex);
     }
-
-
-
-
-
-//ResultSet resultadoQuery = consultaPreparada.executeQuery();
+    
     return false;
+}
+
+public void aprobarEstadoDelUsuario(int id){
+    
+    String queryParaAprobarEstado= "update usuario set usuario.estado = 'aprobado' where id=?";
+    
+    if(comprobarEstadoUsuarioPendiente(id)){
+       
+        try {
+      
+        PreparedStatement declaracionPreparada= conexion.getConnection().prepareStatement(queryParaAprobarEstado);
+        
+        declaracionPreparada.setInt(1, id);
+        
+        declaracionPreparada.execute();
+          
+    } catch (SQLException ex) {
+        Logger.getLogger(EstudioController.class.getName()).log(Level.SEVERE, null, ex);
+        System.err.println("Error al aprobar estado del usuario");
+    }
+        
+    }
+    
+   // String queryParaAprobar= ""
+    
+   
+    
+    
 
 }
 
