@@ -15,7 +15,7 @@ public class Estudio_Conect {
         try{
             Connection conect=DriverManager.getConnection("jdbc:mysql://localhost:3306/contable_ocma", "root", "");
             
-            Statement state=state.createStatement();
+            Statement state=conect.createStatement();
             
             ResultSet result=state.executeQuery("SELECT*FROM USUARIO");
             
