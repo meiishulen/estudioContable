@@ -19,10 +19,6 @@ private double monto;
 
 public Usuario(){}
 
-
-    
-
-
     public int getId() {
         return id;
     }

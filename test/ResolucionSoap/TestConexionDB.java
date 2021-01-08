@@ -1,9 +1,10 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- 
+ */
 package ResolucionSoap;
+
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -12,10 +13,10 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-*
+/**
  *
  * @author IvoSpruth
- 
+ */
 public class TestConexionDB {
     
     public TestConexionDB() {
@@ -49,7 +50,7 @@ public class TestConexionDB {
     public void setUp() {
     }
     
-  //  @After //
+    @After
     public void tearDown() {
     }
 
@@ -59,4 +60,3 @@ public class TestConexionDB {
     // @Test
     // public void hello() {}
 }
-*/
