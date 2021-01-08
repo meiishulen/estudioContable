@@ -9,7 +9,7 @@ package user;
  *
  * @author GisellePonce
  */
-public class java {
+public class usuario {
     
    private int id;
    private String cuit;
@@ -19,3 +19,13 @@ public class java {
     
     
 }
+
+public void datosDeUsuario (int id ; String registro){
+ 
+
+return ( getUsuarioId)
+
+
+
+}
+
